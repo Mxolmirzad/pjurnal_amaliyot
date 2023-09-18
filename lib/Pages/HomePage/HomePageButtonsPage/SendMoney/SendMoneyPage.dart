@@ -56,7 +56,9 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.pop(context);
+                        },
                         child: CircleAvatar(
                           radius: 24.0.r,
                           backgroundImage: AssetImage(

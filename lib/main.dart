@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageButtonsPage/SendMoney/SendMoneyPage.dart';
+import 'package:pjurnal_amaliyot/Pages/HomePage/HomePage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
             primarySwatch: Colors.blue,
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
           ),
-          home: SendMoneyPage(),
+          home: HomePage(),
         );
       },
     );

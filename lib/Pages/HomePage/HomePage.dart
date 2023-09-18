@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageButtonsPage/SendMoney/SendMoneyPage.dart';
 import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageModels/HomePageElements.dart';
 import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageModels/ModelsHomePage.dart';
 
@@ -137,24 +138,24 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  HomePageButton(_models[0]),
-                  HomePageButton(_models[1]),
+                  HomePageButton(_models[0],SendMoneyPage(),context),
+                  // HomePageButton(_models[1]),
                 ],
               ),
             ),
             SizedBox(
               height: 16.0.h,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24.0.w),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  HomePageButton(_models[2]),
-                  HomePageButton(_models[3]),
-                ],
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.symmetric(horizontal: 24.0.w),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            //     children: [
+            //       HomePageButton(_models[2]),
+            //       HomePageButton(_models[3]),
+            //     ],
+            //   ),
+            // ),
           ],
         ),
       ),

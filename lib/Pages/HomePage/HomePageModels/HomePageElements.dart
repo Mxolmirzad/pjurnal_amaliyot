@@ -2,9 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageModels/ModelsHomePage.dart';
 
-Widget HomePageButton(HomePageButtonModels modeltxt) {
+Widget HomePageButton(HomePageButtonModels modeltxt,
+    StatefulWidget navigatePage, BuildContext context) {
   return InkWell(
-    onTap: () {},
+    onTap: () {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => navigatePage,
+        ),
+      );
+    },
     child: Container(
       width: 156.w,
       height: 140.h,
