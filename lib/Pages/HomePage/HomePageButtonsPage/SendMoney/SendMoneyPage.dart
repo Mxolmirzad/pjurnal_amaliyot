@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pjurnal_amaliyot/Pages/HomePage/HomePage.dart';
 import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageButtonsPage/SendMoney/SendMoneyModels/ContactModels.dart';
+import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageButtonsPage/SendMoney/SendMoneyPersonal/SendMoneyPersonalPage.dart';
 import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageModels/HomePageElements.dart';
+import 'package:pjurnal_amaliyot/ozgarmaslar.dart';
 
 class SendMoneyPage extends StatefulWidget {
   const SendMoneyPage({super.key});
@@ -48,6 +51,9 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
       body: SafeArea(
         child: Column(
           children: [
+            SizedBox(
+              height: 16.0.h,
+            ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 24.0.w),
               child: Column(
@@ -57,16 +63,19 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
                     children: [
                       InkWell(
                         onTap: () {
-                          Navigator.pop(context);
+                          OrqagaQaytish.OldingilariniOchiribQaytish(
+                            context,
+                            HomePage(),
+                          );
                         },
                         child: CircleAvatar(
                           radius: 24.0.r,
-                          backgroundImage: AssetImage(
+                          backgroundImage: const AssetImage(
                             "assets/images/NotificationBgHomePage.png",
                           ),
                           child: Icon(
                             Icons.arrow_back,
-                            color: Color(0xFF1F2C37),
+                            color: const Color(0xFF1F2C37),
                             size: 24.0.sp,
                           ),
                         ),
@@ -129,41 +138,51 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
   }
 
   Widget _ContactWidget(ContactModels contact) {
-    return ListTile(
-      leading: Image.asset(
-        contact.profilImage,
-        width: 48.w,
-        height: 48.0.h,
-      ),
-      title: Text(
-        contact.name,
-        style: TextStyle(
-          fontSize: 14.0.sp,
-          fontWeight: FontWeight.w600,
-          color: Color(0xFF1F2C37),
+    return InkWell(
+      onTap: () {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const SendMoneyPersonalPage(),
+          ),
+        );
+      },
+      child: ListTile(
+        leading: Image.asset(
+          contact.profilImage,
+          width: 48.w,
+          height: 48.0.h,
         ),
-      ),
-      subtitle: Text(
-        "${contact.banktype} • ${contact.cardnumber} ****",
-        style: TextStyle(
-            fontSize: 12.0.sp,
-            fontWeight: FontWeight.w500,
-            color: const Color(0xFF9CA4AB)),
-      ),
-      trailing: IconButton(
-        onPressed: () {
-          setState(() {
-            contact.favorite = !contact.favorite;
-            if (contact.favorite) {
-              _contactFavorite.add(contact);
-            } else {
-              _contactFavorite.remove(contact);
-            }
-          });
-        },
-        icon: Icon(
-          contact.favorite ? Icons.star_sharp : Icons.star_border_outlined,
-          color: const Color(0xFF804E89),
+        title: Text(
+          contact.name,
+          style: TextStyle(
+            fontSize: 14.0.sp,
+            fontWeight: FontWeight.w600,
+            color: Color(0xFF1F2C37),
+          ),
+        ),
+        subtitle: Text(
+          "${contact.banktype} • ${contact.cardnumber} ****",
+          style: TextStyle(
+              fontSize: 12.0.sp,
+              fontWeight: FontWeight.w500,
+              color: const Color(0xFF9CA4AB)),
+        ),
+        trailing: IconButton(
+          onPressed: () {
+            setState(() {
+              contact.favorite = !contact.favorite;
+              if (contact.favorite) {
+                _contactFavorite.add(contact);
+              } else {
+                _contactFavorite.remove(contact);
+              }
+            });
+          },
+          icon: Icon(
+            contact.favorite ? Icons.star_sharp : Icons.star_border_outlined,
+            color: const Color(0xFF804E89),
+          ),
         ),
       ),
     );

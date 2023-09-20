@@ -138,24 +138,24 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  HomePageButton(_models[0],SendMoneyPage(),context),
-                  // HomePageButton(_models[1]),
+                  HomePageButton(_models[0], const SendMoneyPage(), context),
+                  HomePageButton(_models[1], const SendMoneyPage(), context),
                 ],
               ),
             ),
             SizedBox(
               height: 16.0.h,
             ),
-            // Padding(
-            //   padding: EdgeInsets.symmetric(horizontal: 24.0.w),
-            //   child: Row(
-            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //     children: [
-            //       HomePageButton(_models[2]),
-            //       HomePageButton(_models[3]),
-            //     ],
-            //   ),
-            // ),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 24.0.w),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  HomePageButton(_models[2], const SendMoneyPage(), context),
+                  HomePageButton(_models[3], const SendMoneyPage(), context),
+                ],
+              ),
+            ),
           ],
         ),
       ),
