@@ -28,34 +28,15 @@ class _SendMoneyPersonalPageState extends State<SendMoneyPersonalPage> {
                   SizedBox(
                     height: 28.0.h,
                   ),
-                  AppBar(
-                    backgroundColor: Colors.transparent,
-                    shadowColor: Colors.transparent,
-                    leading: InkWell(
-                      onTap: () {
-                        OrqagaQaytish.OldingilariniOchiribQaytish(
-                            context, const SendMoneyPage());
-                      },
-                      child: CircleAvatar(
-                        radius: 24.0.r,
-                        backgroundImage: const AssetImage(
-                          "assets/images/NotificationBgHomePage.png",
-                        ),
-                        child: Icon(
-                          Icons.arrow_back,
-                          color: Color(0xFF1F2C37),
-                          size: 24.0.sp,
-                        ),
+                  Row(
+                    children: [
+                      PagesButtons.AppBarBackButton(
+                          const SendMoneyPage(), context),
+                      SizedBox(
+                        width: 24.0.w,
                       ),
-                    ),
-                    title: Text(
-                      "Send money",
-                      style: TextStyle(
-                        color: Color(0xFF1F2C37),
-                        fontSize: 18.0.sp,
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
+                      TitleText.appbartitletext("Send money"),
+                    ],
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -94,7 +75,7 @@ class _SendMoneyPersonalPageState extends State<SendMoneyPersonalPage> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      titleText("Amount:"),
+                      TitleText.titleText("Amount:"),
                       SizedBox(
                         height: 16.0.h,
                       ),
@@ -102,7 +83,7 @@ class _SendMoneyPersonalPageState extends State<SendMoneyPersonalPage> {
                       SizedBox(
                         height: 24.0.h,
                       ),
-                      titleText("Message"),
+                      TitleText.titleText("Message"),
                       SizedBox(
                         height: 8.0.h,
                       ),
@@ -140,32 +121,7 @@ class _SendMoneyPersonalPageState extends State<SendMoneyPersonalPage> {
                   SizedBox(
                     height: 112.0.h,
                   ),
-                  InkWell(
-                    onTap: () {
-                      ComfirmTransferDialog(context);
-                    },
-                    splashColor: Colors.green,
-                    child: Container(
-                      width: double.infinity,
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 24.0.w,
-                        vertical: 12.0.h,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(4.0.r),
-                        color: const Color(0xFF4F3D56),
-                      ),
-                      child: Text(
-                        "Send Money",
-                        style: TextStyle(
-                          fontSize: 14.0.sp,
-                          color: const Color(0xFfFDFDFD),
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
-                  ),
+                  PagesButtons.WidgetAsosiyButton("Send Money", context),
                 ],
               ),
             ),

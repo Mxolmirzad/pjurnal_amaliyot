@@ -27,7 +27,7 @@ Widget dropdownMenuSendMoney() {
         Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(24.0.r),
-            color: Color(0xFFE2E0E4),
+            color: const Color(0xFFE2E0E4),
           ),
           width: 92.w,
           height: 24.0.h,
@@ -86,7 +86,7 @@ Widget dropdownMenuSendMoney() {
                 value: "RUB",
               ),
             ],
-            onChanged: (value) => print("SAlom"),
+            onChanged: (value) => print("Salom"),
           ),
         ),
         Text(
@@ -94,7 +94,7 @@ Widget dropdownMenuSendMoney() {
           style: TextStyle(
             fontSize: 32.0.sp,
             fontWeight: FontWeight.w600,
-            color: Color(0xFF1F2C37),
+            color: const Color(0xFF1F2C37),
           ),
         )
       ],
@@ -102,18 +102,39 @@ Widget dropdownMenuSendMoney() {
   );
 }
 
-Widget titleText(String title) {
-  return Text(
-    title,
-    style: TextStyle(
-      fontSize: 14.0.sp,
-      fontWeight: FontWeight.w600,
-      color: const Color(0xFF1F2C37),
+Widget transfertype() {
+  return Container(
+    margin: EdgeInsets.only(bottom: 8.0.h),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        transferDetailTitle("Admin fee"),
+        InkWell(
+          onTap: () {},
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 8.0.w),
+            height: 22.0.h,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: const Color(0xFF804E89),
+              borderRadius: BorderRadius.circular(6.r),
+            ),
+            child: Text(
+              "Free",
+              style: TextStyle(
+                fontSize: 14.sp,
+                fontWeight: FontWeight.w500,
+                color: const Color(0xFFFDFDFD),
+              ),
+            ),
+          ),
+        )
+      ],
     ),
   );
 }
 
-Future ComfirmTransferDialog(BuildContext context) {
+Future ComfirmTransferDialog(BuildContext context,Widget transfertype) {
   return showDialog(
     context: context,
     builder: (context) {
@@ -160,42 +181,14 @@ Future ComfirmTransferDialog(BuildContext context) {
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            titleText("Transfer detail"),
+            TitleText.titleText("Transfer detail"),
             SizedBox(
               height: 16.0.h,
             ),
-            _detailinfo("From", "e-Wallet • 3446 4655 5445"),
-            _detailinfo("To", "BCA • 2468 3545 4534"),
-            _detailinfo("Transfer", "\$150.42"),
-            Container(
-              margin: EdgeInsets.only(bottom: 8.0.h),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _transferDetailTitle("Admin fee"),
-                  InkWell(
-                    onTap: () {},
-                    child: Container(
-                      padding: EdgeInsets.symmetric(horizontal: 8.0.w),
-                      height: 22.0.h,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                        color: const Color(0xFF804E89),
-                        borderRadius: BorderRadius.circular(6.r),
-                      ),
-                      child: Text(
-                        "Free",
-                        style: TextStyle(
-                          fontSize: 14.sp,
-                          fontWeight: FontWeight.w500,
-                          color: const Color(0xFFFDFDFD),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
+            detailinfo("From", "e-Wallet • 3446 4655 5445"),
+            detailinfo("To", "BCA • 2468 3545 4534"),
+            detailinfo("Transfer", "\$150.42"),
+            transfertype,
             const Divider(
               thickness: 1.0,
               color: Color(0xFFE3E9ED),
@@ -203,7 +196,7 @@ Future ComfirmTransferDialog(BuildContext context) {
             SizedBox(
               height: 12.0.h,
             ),
-            _detailinfo("Total transfer", "\$150.42"),
+            detailinfo("Total transfer", "\$150.42"),
           ],
         ),
         actions: [
@@ -253,20 +246,20 @@ Widget DialogMenuButton(String title, BuildContext context) {
   );
 }
 
-Widget _detailinfo(String title, String info) {
+Widget detailinfo(String title, String info) {
   return Container(
     margin: EdgeInsets.only(bottom: 8.0.h),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        _transferDetailTitle(title),
-        _transferDetailInfo(info),
+        transferDetailTitle(title),
+        transferDetailInfo(info),
       ],
     ),
   );
 }
 
-Widget _transferDetailTitle(String title) {
+Widget transferDetailTitle(String title) {
   return Text(
     title,
     style: TextStyle(
@@ -277,7 +270,7 @@ Widget _transferDetailTitle(String title) {
   );
 }
 
-Widget _transferDetailInfo(String title) {
+Widget transferDetailInfo(String title) {
   return Text(
     title,
     style: TextStyle(
@@ -348,7 +341,7 @@ Future TransferFailedDialog(BuildContext context) {
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            titleText("Failed"),
+            TitleText.titleText("Failed"),
             Text(
               "Your transfer is failed because of bad networking.",
               style: TextStyle(

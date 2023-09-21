@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:pjurnal_amaliyot/Pages/HomePage/HomePage.dart';
 import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageButtonsPage/SendMoney/SendMoneyModels/ContactModels.dart';
 import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageButtonsPage/SendMoney/SendMoneyPersonal/SendMoneyPersonalPage.dart';
-import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageModels/HomePageElements.dart';
 import 'package:pjurnal_amaliyot/ozgarmaslar.dart';
 
 class SendMoneyPage extends StatefulWidget {
@@ -14,6 +13,8 @@ class SendMoneyPage extends StatefulWidget {
 }
 
 class _SendMoneyPageState extends State<SendMoneyPage> {
+  final TextEditingController _searchtext = TextEditingController();
+
   final List<bool> _menuButton = [true, false, false, false];
 
   final List<ContactModels> _contactFavorite = [];
@@ -61,53 +62,15 @@ class _SendMoneyPageState extends State<SendMoneyPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      InkWell(
-                        onTap: () {
-                          OrqagaQaytish.OldingilariniOchiribQaytish(
-                            context,
-                            HomePage(),
-                          );
-                        },
-                        child: CircleAvatar(
-                          radius: 24.0.r,
-                          backgroundImage: const AssetImage(
-                            "assets/images/NotificationBgHomePage.png",
-                          ),
-                          child: Icon(
-                            Icons.arrow_back,
-                            color: const Color(0xFF1F2C37),
-                            size: 24.0.sp,
-                          ),
-                        ),
-                      ),
-                      Text(
-                        "Send money",
-                        style: TextStyle(
-                          color: Color(0xFF1F2C37),
-                          fontSize: 18.0.sp,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {},
-                        child: CircleAvatar(
-                          radius: 24.0.r,
-                          backgroundImage: AssetImage(
-                            "assets/images/NotificationBgHomePage.png",
-                          ),
-                          child: Icon(
-                            Icons.add,
-                            color: Color(0xFF1F2C37),
-                            size: 24.0.sp,
-                          ),
-                        ),
-                      ),
+                      PagesButtons.AppBarBackButton(HomePage(), context),
+                      TitleText.appbartitletext("Send money"),
+                      PagesButtons.IconsButtons(Icons.add),
                     ],
                   ),
                   SizedBox(
                     height: 24.0.h,
                   ),
-                  SearchWidget("Search contact"),
+                  InputText.SearchInputText("Search contact", _searchtext),
                   SizedBox(
                     height: 16.0.h,
                   ),
