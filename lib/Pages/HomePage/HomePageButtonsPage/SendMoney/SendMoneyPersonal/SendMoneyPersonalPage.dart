@@ -121,7 +121,7 @@ class _SendMoneyPersonalPageState extends State<SendMoneyPersonalPage> {
                   SizedBox(
                     height: 112.0.h,
                   ),
-                  PagesButtons.WidgetAsosiyButton("Send Money", context),
+                  PagesButtons.WidgetAsosiyButton("Send Money", context,_navigate),
                 ],
               ),
             ),
@@ -130,4 +130,10 @@ class _SendMoneyPersonalPageState extends State<SendMoneyPersonalPage> {
       ),
     );
   }
+
+  void _navigate(){
+    ComfirmTransferDialog(
+            context, TransferSuccesDialog(context),true);
+  }
+
 }

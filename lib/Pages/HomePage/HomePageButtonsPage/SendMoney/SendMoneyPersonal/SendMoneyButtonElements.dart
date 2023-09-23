@@ -134,7 +134,8 @@ Widget transfertype() {
   );
 }
 
-Future ComfirmTransferDialog(BuildContext context,Widget transfertype) {
+Future ComfirmTransferDialog(
+    BuildContext context, Future navigate, bool _type) {
   return showDialog(
     context: context,
     builder: (context) {
@@ -188,7 +189,7 @@ Future ComfirmTransferDialog(BuildContext context,Widget transfertype) {
             detailinfo("From", "e-Wallet • 3446 4655 5445"),
             detailinfo("To", "BCA • 2468 3545 4534"),
             detailinfo("Transfer", "\$150.42"),
-            transfertype,
+            _type ? transfertype() : Container(),
             const Divider(
               thickness: 1.0,
               color: Color(0xFFE3E9ED),

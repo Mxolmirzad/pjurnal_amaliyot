@@ -13,24 +13,25 @@ class ContactButtonPage extends StatefulWidget {
 class _ContactButtonPageState extends State<ContactButtonPage> {
   final TextEditingController _searchText = TextEditingController();
 
-  Widget _contacts(int index) {
+  Widget _contact() {
     return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(
-          height: 12.0.h,
-        ),
         ListTile(
+          contentPadding: const EdgeInsets.all(0),
+          minVerticalPadding: 0.0.h,
+          leading: Image.asset(
+            "assets/images/PersonalImage/Ellipse3.png",
+            width: 48.0.w,
+            height: 48.0.h,
+          ),
           title: TitleText.titleText("Full name"),
-          leading:
-              Image.asset("assets/images/PersonalImage/Ellipse${index}.png"),
           subtitle: Text(
-            "BCA • 2254 1654 ****",
+            "BCA • 2468 3545 ****",
             style: TextStyle(
-                fontSize: 12.0.sp,
-                fontWeight: FontWeight.w500,
-                color: const Color(0xFF9CA4AB)),
+              fontSize: 12.0.sp,
+              color: const Color(0xFF78828A),
+              fontWeight: FontWeight.w500,
+            ),
           ),
         ),
         const Divider(
@@ -45,88 +46,75 @@ class _ContactButtonPageState extends State<ContactButtonPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24.0.w),
-        child: ListView(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                SizedBox(
-                  height: 16.0.h,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    PagesButtons.AppBarBackButton(HomePage(), context),
-                    TitleText.appbartitletext("Contacts"),
-                    PagesButtons.IconsButtons(Icons.more_horiz),
-                  ],
-                ),
-                SizedBox(
-                  height: 24.0.h,
-                ),
-                InputText.SearchInputText(
-                  "Search contact...",
-                  _searchText,
-                ),
-                SizedBox(
-                  height: 16.0.h,
-                ),
-                Row(
-                  children: [
-                    InkWell(
-                      onTap: () {},
-                      child: Container(
-                        width: 48.0.w,
-                        height: 48.0.h,
-                        alignment: Alignment.center,
-                        decoration: const BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: Color(0xFFECF1F6),
+        child: Padding(
+          padding: EdgeInsets.symmetric(horizontal: 24.0.w),
+          child: ListView(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  SizedBox(
+                    height: 16.0.h,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      PagesButtons.AppBarBackButton(HomePage(), context),
+                      TitleText.appbartitletext("Contacts"),
+                      PagesButtons.IconsButtons(Icons.more_horiz),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 24.0.h,
+                  ),
+                  InputText.SearchInputText(
+                    "Search contact...",
+                    _searchText,
+                  ),
+                  SizedBox(
+                    height: 16.0.h,
+                  ),
+                  Row(
+                    children: [
+                      InkWell(
+                        onTap: () {},
+                        child: Container(
+                          width: 48.0.w,
+                          height: 48.0.h,
+                          alignment: Alignment.center,
+                          decoration: const BoxDecoration(
+                            shape: BoxShape.circle,
+                            color: Color(0xFFECF1F6),
+                          ),
+                          child: Icon(Icons.add),
                         ),
-                        child: Icon(Icons.add),
                       ),
-                    ),
-                    SizedBox(
-                      width: 12.0.w,
-                    ),
-                    TitleText.titleText("Add contact"),
-                  ],
-                ),
-                SizedBox(
-                  height: 24.0.h,
-                ),
-                TitleText.titleText("A"),
-                _contacts(1),
-                _contacts(2),
-                _contacts(3),
-                TitleText.titleText("A"),
-                _contacts(1),
-                _contacts(2),
-                _contacts(3),
-                TitleText.titleText("A"),
-                _contacts(1),
-                _contacts(2),
-                _contacts(3),
-                TitleText.titleText("A"),
-                _contacts(1),
-                _contacts(2),
-                _contacts(3),
-                TitleText.titleText("A"),
-                _contacts(1),
-                _contacts(2),
-                _contacts(3),
-                TitleText.titleText("A"),
-                _contacts(1),
-                _contacts(2),
-                _contacts(3),
-              ],
-            ),
-          ],
+                      SizedBox(
+                        width: 12.0.w,
+                      ),
+                      TitleText.titleText("Add contact"),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 24.0.h,
+                  ),
+                  TitleText.titleText("A"),
+                  _contact(),
+                  _contact(),
+                  _contact(),
+                  _contact(),
+                  TitleText.titleText("B"),
+                  _contact(),
+                  _contact(),
+                  _contact(),
+                  _contact(),
+                ],
+              ),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }

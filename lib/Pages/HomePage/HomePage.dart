@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageButtonsPage/ContactButtonPages/ContactButtonPage.dart';
+import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageButtonsPage/RequestMoney/RequestMoneyPage.dart';
 import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageButtonsPage/SendMoney/SendMoneyPage.dart';
 import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageModels/HomePageElements.dart';
 import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageModels/ModelsHomePage.dart';
@@ -151,8 +153,8 @@ class _HomePageState extends State<HomePage> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  HomePageButton(_models[2], const SendMoneyPage(), context),
-                  HomePageButton(_models[3], const SendMoneyPage(), context),
+                  HomePageButton(_models[2], const RequestoneyPage(), context),
+                  HomePageButton(_models[3], const ContactButtonPage(), context),
                 ],
               ),
             ),

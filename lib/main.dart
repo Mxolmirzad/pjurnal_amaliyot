@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageButtonsPage/ContactButtonPages/ContactButtonPage.dart';
-
+import 'package:pjurnal_amaliyot/Pages/ProfilPage/ProfilPage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,7 +27,7 @@ class _MyAppState extends State<MyApp> {
             primarySwatch: Colors.blue,
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
           ),
-          home: const ContactButtonPage(),
+          home: const ProfilPage(),
         );
       },
     );

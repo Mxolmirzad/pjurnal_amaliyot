@@ -148,11 +148,17 @@ class _RequestoneyPageState extends State<RequestoneyPage> {
               PagesButtons.WidgetAsosiyButton(
                 "Request Money",
                 context,
+                _navigate,
               ),
             ],
           ),
         ),
       ),
     );
+  }
+
+  void _navigate(){
+    ComfirmTransferDialog(
+            context, TransferSuccesDialog(context),false);
   }
 }

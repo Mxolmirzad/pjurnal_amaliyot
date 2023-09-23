@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:pjurnal_amaliyot/Pages/HomePage/HomePageButtonsPage/SendMoney/SendMoneyPersonal/SendMoneyButtonElements.dart';
 
 class WidgetsModels {
   static Widget ContainerBorder(Widget widgetname) {
@@ -24,7 +23,7 @@ class WidgetsModels {
 
 class OrqagaQaytish {
   static void OldingilariniOchiribQaytish(
-      BuildContext context, StatefulWidget widgetName) {
+      BuildContext context, Widget widgetName) {
     Navigator.of(context).pushAndRemoveUntil(
         MaterialPageRoute(
           builder: (context) => widgetName,
@@ -32,12 +31,46 @@ class OrqagaQaytish {
         (route) => false);
   }
 
-  bittaOldinga(BuildContext context, StatefulWidget widget) {
+  static void bittaOldinga(BuildContext context) {
     Navigator.pop(context);
   }
 }
 
+class ProfilImage {
+  static Widget MyProfileImage() {
+    return CircleAvatar(
+      backgroundImage: const AssetImage(
+        "assets/images/PersonalImage/Ellipse1.png",
+      ),
+      backgroundColor: Colors.transparent,
+      radius: 50.0.r,
+    );
+  }
+}
+
 class TitleText {
+  static Widget ButtonTypeTitle(String title) {
+    return Text(
+      title,
+      style: TextStyle(
+        fontSize: 14.0.sp,
+        fontWeight: FontWeight.w500,
+        color: const Color(0xFF9CA4AB),
+      ),
+    );
+  }
+
+  static Widget ProfilPageButtonText(String title) {
+    return Text(
+      title,
+      style: TextStyle(
+        fontSize: 16.0.sp,
+        fontWeight: FontWeight.w500,
+        color: const Color(0xFF1F2C37),
+      ),
+    );
+  }
+
   static Widget titleText(String title) {
     return Text(
       title,
@@ -53,7 +86,7 @@ class TitleText {
     return Text(
       title,
       style: TextStyle(
-        color: Color(0xFF1F2C37),
+        color: const Color(0xFF1F2C37),
         fontSize: 18.0.sp,
         fontWeight: FontWeight.w600,
       ),
@@ -62,11 +95,11 @@ class TitleText {
 }
 
 class PagesButtons {
-  static WidgetAsosiyButton(String title, BuildContext context) {
+  static WidgetAsosiyButton(
+      String title, BuildContext context, Function functionname) {
     return InkWell(
       onTap: () {
-        ComfirmTransferDialog(
-            context, title == "Send money" ? transfertype() : Container());
+        functionname();
       },
       splashColor: Colors.green,
       child: Container(
@@ -92,8 +125,7 @@ class PagesButtons {
     );
   }
 
-  static Widget AppBarBackButton(
-      StatefulWidget NavigateWidget, BuildContext context) {
+  static Widget AppBarBackButton(Widget NavigateWidget, BuildContext context) {
     return InkWell(
       onTap: () {
         OrqagaQaytish.OldingilariniOchiribQaytish(context, NavigateWidget);
@@ -167,6 +199,46 @@ class InputText {
           color: const Color(0xFF9CA4AB),
           size: 24.0.sp,
         ),
+      ),
+    );
+  }
+
+  static bool _isView = false;
+
+  static Widget PasswordInput(
+      String hint, TextEditingController textcontroller) {
+    return WidgetsModels.ContainerBorder(
+      TextField(
+        controller: textcontroller,
+        style: TextStyle(
+          fontSize: 12.0.sp,
+          color: const Color(0xFF78828A),
+          fontWeight: FontWeight.w400,
+        ),
+        decoration: InputDecoration(
+          suffixIcon: InkWell(
+            onTap: () {
+              _isView = !_isView;
+            },
+            child: _isView
+                ? const Icon(
+                    Icons.visibility,
+                    color: Color(0xFFA2A0B3),
+                  )
+                : const Icon(
+                    Icons.visibility_off,
+                    color: Color(0xFFA2A0B3),
+                  ),
+          ),
+          hintText: hint,
+          hintStyle: TextStyle(
+            color: const Color(0xFF78828A),
+            fontSize: 12.0.sp,
+            fontWeight: FontWeight.w400,
+          ),
+          border: InputBorder.none,
+        ),
+        obscureText: true,
       ),
     );
   }
