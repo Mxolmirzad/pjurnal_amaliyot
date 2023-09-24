@@ -131,7 +131,7 @@ class _HomePageState extends State<HomePage> {
             SizedBox(
               height: 16.0.h,
             ),
-            CaruselPaymentCard(_cards, context),
+            // CaruselPaymentCard(_cards, context),
             SizedBox(
               height: 28.0.h,
             ),
